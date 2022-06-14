@@ -1,0 +1,42 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - My New Hugo Site</title>
+        <link>https://bright9911.github.io/cswweb/posts/</link>
+        <description>All Posts | My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 17:03:58 &#43;0800</lastBuildDate><atom:link href="https://bright9911.github.io/cswweb/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Spark</title>
+    <link>https://bright9911.github.io/cswweb/spark/</link>
+    <pubDate>Tue, 14 Jun 2022 17:03:58 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>https://bright9911.github.io/cswweb/spark/</guid>
+    <description><![CDATA[导⼊pyspark.sql，创建spark session
+1 2 3 4 5  from pyspark import SparkConf from pyspark.sql import SparkSession import pyspark.sql.functions as f from pyspark.sql.functions import array_contains spark = SparkSession.builder.config(conf=SparkConf()).getOrCreate()     读取 yelp_academic_dataset_business.json ⽂件，创建DataFrame
+1  chushi = spark.read.json(&#39;file:///usr/local/src/yelp_academic_dataset_business.json&#39;)     分割数据集中 categories ，剔除数据集中缺少城市信息的数据
+1 2 3 4  import pyspark.sql.functions as f chushitype = f.split(chushi[&#34;categories&#34;],&#39;,&#39;) fenge = chushi.withColumn(&#34;categories&#34;,chushitype) chuli = fenge.dropna(subset=[&#39;city&#39;])     显示数据集数据50条]]></description>
+</item>
+<item>
+    <title>First_post</title>
+    <link>https://bright9911.github.io/cswweb/first_post/</link>
+    <pubDate>Tue, 14 Jun 2022 16:53:16 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>https://bright9911.github.io/cswweb/first_post/</guid>
+    <description><![CDATA[keras-image-recognition keras 图像识别
+python版本 Python 3.4.5
+keras 版本 2.2.2
+tensoflow 版本 1.9.0
+os linux
+训练/测试数据下载 链接：https://pan.baidu.com/s/1f1N01Qv5N6UouiOJS4ZCDg 提取码：ycks
+链接：https://pan.baidu.com/s/1BSPDaqoQv_7kQifA9rbzMA 提取码：k7ej
+下载完成后需要放到downloads 目录下面解压
+使用keras + tensorflow + cpu 进行图像识别 识别的类型有三种：猫，狗，马 需要安装依赖包
+pip install -r requirements.txt
+模型的可视化需要安装graphviz
+sudo apt-get install graphviz 或者 sudo yum install graphviz
+运行项目 cd spiders/recognition/train
+python train.py
+识别图像 cd spiders/prediction
+python prediction.py -i ./data/20181128094323.jpg -m ../classify.model
+更多介绍 https://blog.csdn.net/lucky404/article/details/84581885]]></description>
+</item>
+</channel>
+</rss>
